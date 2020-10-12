@@ -68,12 +68,11 @@ if (isset($_GET['cedula'])) {
                         $c = new Ciudad();
                         $dato = $c->getFindCiudad($data->cod_ciudad);
                         ?>
-                        <option value="<?php $dato->codigo_cda?>" selected="selected"><?php echo $dato->nombre_cda?></option>
+                        <option value="<?php $dato->codigo_cda?>" selected="selected" disabled="disabled"><?php echo $dato->nombre_cda?></option>
                         <?php
-                        if(!$data->codigo_cda){
-                            foreach ($c->getCiudades() as $ciudad) {
-                        }?>
-                            <option value='<?php echo $ciudad->codigo_cda ?>'><?php echo $ciudad->nombre_cda ?></option>
+                            foreach ($c->getFindCiudades($dato->codigo_cda) as $ciudad) {
+                        ?>
+                        <option value='<?php echo $ciudad->codigo_cda ?>'><?php echo $ciudad->nombre_cda ?></option>
                         <?php } ?>
                     </select>
                 </div>

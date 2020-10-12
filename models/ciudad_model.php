@@ -25,4 +25,11 @@ class Ciudad {
         return $ciudad;
     }
 
+    public function getFindCiudades($codigo_cda) {
+        $sql = $this->enlace->prepare("SELECT * FROM tbl_ciudad WHERE codigo_cda<> ?;");
+        $sql->execute([$codigo_cda]);
+        $ciudades = $sql->fetchAll(PDO::FETCH_OBJ);
+        return $ciudades;
+    }
+
 }
